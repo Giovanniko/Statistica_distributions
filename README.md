@@ -26,14 +26,16 @@ Open a new terminal or command line in the folder location of the package
 
 ## Type:
 
+```
 pip install statistica-distributions
+```
 
 Once installed, run a command depending on the data type to analyze:
-
+```
 from statistica_distributions import Gaussian
 
 from statistica_distributions import Binomial
-
+```
 
 
 
