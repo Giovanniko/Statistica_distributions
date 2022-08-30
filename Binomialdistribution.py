@@ -9,6 +9,7 @@ class Binomial(Distribution):
     Attributes:
         mean (float) representing the mean value of the distribution
         stdev (float) representing the standard deviation of the distribution
+        variance(float) representing the variance of the distribution
         data_list (list of floats) a list of floats to be extracted from the data file
         p (float) representing the probability of an event occurring
         n (int) the total number of trials
@@ -89,7 +90,19 @@ class Binomial(Distribution):
         self.stdev = math.sqrt(self.n * self.p * (1-self.p))
         return self.stdev
             
-        
+    def calculate_variance(self):
+
+        """Function to calculate the variance from n and p
+
+        Args:
+            None
+
+        Reurns:
+            float: variance of the data set
+        """
+
+        self.variance = self.n * self.p * (1-self.p)
+        return self.variance
         
     def replace_stats_with_data(self):
     
