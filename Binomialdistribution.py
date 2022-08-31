@@ -51,7 +51,9 @@ class Binomial(Distribution):
         #               variable.   
         self.mean = self.calculate_mean()#self.n * self.p #calculate_mean(self)
         self.stdev = self.calculate_stdev()#math.sqrt(self.n * self.p * (1-self.p))#calculate_stdev(self)
-        Distribution.__init__(self, self.mean, self.stdev)
+        self.variance = self.calculate_variance()
+        self.skew = self.calculate_skewness()
+        Distribution.__init__(self, self.mean, self.stdev, self.variance, self.skew)
                    
     
     def calculate_mean(self):
@@ -97,12 +99,25 @@ class Binomial(Distribution):
         Args:
             None
 
-        Reurns:
+        Returns:
             float: variance of the data set
         """
 
         self.variance = self.n * self.p * (1-self.p)
         return self.variance
+
+    def calculate_skewness(self):
+
+        """Function to calculate the skewness from n and p
+
+        Args:
+            None
+
+        Returns:
+            float: skewness of the data set
+        """
+        self.skew = (1-2*self.p)/math.sqrt(self.n * self.p * (1-self.p))
+        return self.skew
         
     def replace_stats_with_data(self):
     
@@ -138,6 +153,7 @@ class Binomial(Distribution):
         self.p = self.data.count(1) / self.n
         self.mean = self.calculate_mean()
         self.stdev = self.calculate_stdev()
+        self.variance = self.calculate_variance()
         return self.p, self.n
         
         

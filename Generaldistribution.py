@@ -1,6 +1,6 @@
 class Distribution:
 	
-	def __init__(self, mu=0, sigma=1):
+	def __init__(self, mu=0, sigma=1, var=1, skew=0):
 	
 		""" Generic distribution class for calculating and 
 		visualizing a probability distribution.
@@ -13,6 +13,8 @@ class Distribution:
 		
 		self.mean = mu
 		self.stdev = sigma
+		self.variance = var
+		self.skew = skew
 		self.data = []
 
 
